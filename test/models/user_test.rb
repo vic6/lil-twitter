@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: 'TestUser', email: 'fake@email.com',
-                    password: 'hello', password_confirmation: 'hello')
+                     password: 'hello', password_confirmation: 'hello')
   end
 
   test 'should be valid' do
@@ -33,6 +33,7 @@ class UserTest < ActiveSupport::TestCase
       foo@bar_baz.com
       foo@bar+baz.com
     ]
+
     invalid_addresses.each do |email|
       @user.email = email
       assert_not @user.valid?, "#{email.inspect}, should be invalid"
@@ -51,5 +52,15 @@ class UserTest < ActiveSupport::TestCase
     @user.email = mixed_case_email
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
+  end
+
+  test 'password should not be blank' do
+    @user.password = @user.password_confirmation = '    '
+    assert_not @user.valid?
+  end
+
+  test 'password should contain at least 5 charactors' do
+    @user.password = @user.password_confirmation = 'abcd'
+    assert_not @user.valid?
   end
 end
