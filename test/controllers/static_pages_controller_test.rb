@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @base_title = 'Ruby on Rails Tutorial Lil Twitter'
+    @base_title = "Lil' Twitter"
   end
 
   test 'should get root' do
@@ -32,6 +32,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get contact" do
     get contact_path
     assert_response :success
-    assert_select 'title', "Contact | Ruby on Rails Tutorial Lil Twitter"
+    assert_select 'title', "Contact | Lil' Twitter"
   end
 end
