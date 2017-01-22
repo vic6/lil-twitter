@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      # handle update
+    else
+      render 'edit'
+    end
+
+  end
+
   def destroy
     log_out
     redirect_to root_url
