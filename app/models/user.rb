@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  # allow_nil lets users change attributes without having to change password 
+  # allow_nil lets users change attributes without having to change password
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
 
   def self.digest(string)
@@ -28,7 +28,8 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  def authenticated?(remember_digest)
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
