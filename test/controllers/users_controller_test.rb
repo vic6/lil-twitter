@@ -24,8 +24,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  # test "should redirect edit when logged in as worng user" do
-  #   log_in_as(@other_user)
-  #   get edit_user_path
-  # end
+  test "should redirect edit when logged in as worng user" do
+    log_in_as(@other_user)
+    get edit_user_path(@user)
+    assert flash.empty?
+    assert_redirected_to root_url
+  end
 end
