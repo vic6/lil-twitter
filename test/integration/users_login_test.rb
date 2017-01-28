@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-
   def setup
     @user = users(:victor)
   end
@@ -63,4 +62,5 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
   end
+
 end
