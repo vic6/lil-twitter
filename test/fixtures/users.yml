@@ -7,3 +7,12 @@ smitty:
   name: Smitty Werbenjagermanjeson
   email: hewas@number1.com
   password_digest: <%= User.digest('password') %>
+
+# extra users to test pagination
+
+<% 30.times do |n| %>
+  user_<%= n %>:
+  name: <%= "User #{n}" %>
+  email: <%= "user-#{n}@liltwitter.com" %>
+  password_digest: <%= "User.digest('password')" %>
+<% end %>
