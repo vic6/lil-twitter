@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should redirect edit when logged in as worng user" do
+  test "should redirect edit when logged in as wrong user" do
     log_in_as(@other_user)
     get edit_user_path(@user)
     assert flash.empty?
@@ -35,4 +35,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_path
     assert_redirected_to login_url
   end
+
+  # test not yet implemented
+  # test "should not allow the admin attribute to be edited via the wef" do
+  #   log_in_as(@other_user)
+  #   assert_not @other_user.admin?
+  #   patch user_path(@other_user), params: {
+  #                                   user: { password: 'password',
+  #                                           password_confirmation: 'password',
+  #                                           admin: true } }
+  #   assert_not @other_user.admin?
+  # end
 end
