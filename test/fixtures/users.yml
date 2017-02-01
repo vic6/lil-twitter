@@ -2,9 +2,10 @@ victor:
   name: victor
   email: 'blahblah.@blah.com'
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 smitty:
-  name: Smitty Werbenjagermanjeson
+  name: Smitty Werbenjagermanjenson
   email: hewas@number1.com
   password_digest: <%= User.digest('password') %>
 
