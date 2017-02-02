@@ -29,8 +29,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       end
     end
     assert_difference 'User.count', -1 do
-      delete user_pat
-      h(@user)
+      delete user_path(@user)
     end
   end
 end
