@@ -1,13 +1,26 @@
-<div class="center jumbotron">
-  <h1>Welcome Lil' twitter</h1>
+<% if logged_in %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome Lil' twitter</h1>
 
-  <h2>
-    <a href=""></a>
+    <h2>
+      <a href=""></a>
 
-  </h2>
+    </h2>
 
-  <%= link_to "Sign up", signup_path , class: "btn btn-lg btn-primary" %>
-</div>
+    <%= link_to "Sign up", signup_path , class: "btn btn-lg btn-primary" %>
+  </div>
 
-<%= link_to image_tag("rails_logo.png", alt: "Rails logo"),
-                      'https://www.simplify.com/blog/wp-content/uploads/2015/03/Ruby_on_Rails.svg_.png' %>
+  <%= link_to image_tag("rails_logo.png", alt: "Rails logo"),
+                        'https://www.simplify.com/blog/wp-content/uploads/2015/03/Ruby_on_Rails.svg_.png' %>
+<% end %>
