@@ -6,6 +6,7 @@ class User < ApplicationRecord
                                   dependent: :destroy
 
   before_save { email.downcase! }
+  before_save { self.phone_number = phone_number.scan(/\d/).join }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
@@ -17,8 +18,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
 
   def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
