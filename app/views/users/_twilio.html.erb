@@ -1,0 +1,5 @@
+<p>Would you like to be notified by text when a new user signs up?</p>
+<%= form for(@user) do |f| %>
+  <%= f.label :phone_number %>
+  <%= f.string :phone_number, class: 'form-control' %>
+<%= end %>
