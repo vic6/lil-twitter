@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass'
 gem 'faker'

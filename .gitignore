@@ -25,3 +25,6 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+# Ignore ENV variables
+.env

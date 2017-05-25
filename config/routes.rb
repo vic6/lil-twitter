@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  match '/text', to: 'notifications#send_message', via: [:get, :post]
   resources :users
   resources :microposts, only: [:create, :destroy]
 end
