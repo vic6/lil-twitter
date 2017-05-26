@@ -6,7 +6,7 @@ class User < ApplicationRecord
                                   dependent: :destroy
 
   before_save { email.downcase! }
-  before_save { self.phone_number = phone_number.scan(/\d/).join }
+  # before_save { self.phone_number = phone_number.scan(/\d/).join }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
