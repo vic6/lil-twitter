@@ -26,13 +26,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'reject invalid email' do
-    invalid_addresses = %w[
+    invalid_addresses = %w(
       user@example,com
       user_at_foo.org
       user.name@example.
       foo@bar_baz.com
       foo@bar+baz.com
-    ]
+    )
 
     invalid_addresses.each do |email|
       @user.email = email
@@ -74,5 +74,15 @@ class UserTest < ActiveSupport::TestCase
     assert_difference 'Micropost.count', -1 do
       @user.destroy
     end
+  end
+
+  test "should follow and unfollow a user" do
+    victor = users(:victor)
+    smitty = users(:smitty)
+    assert_not victor.following?(smitty)
+    victor.follow(smitty)
+    assert victor.following?(smitty)
+    victor.unfollow(smitty)
+    assert_not victor.following?(smitty)
   end
 end
