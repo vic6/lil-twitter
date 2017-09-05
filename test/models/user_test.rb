@@ -82,6 +82,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not victor.following?(smitty)
     victor.follow(smitty)
     assert victor.following?(smitty)
+    assert smitty.followers.include?(victor)
     victor.unfollow(smitty)
     assert_not victor.following?(smitty)
   end

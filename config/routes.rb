@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   match '/text', to: 'notifications#send_message', via: [:get, :post]
-  resources :users
+  # routes for showing follower/following
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :microposts, only: [:create, :destroy]
 end
