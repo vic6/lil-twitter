@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   def send_message
-    @twilio_number = ENV['TWILIO_NUMBER']
+    @twilio_number = '4158497322'
+    p @twilio_number
     @my_number = ENV['PHONE_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
 

@@ -22,8 +22,8 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:success] = "Welcome to Lil' Twitter!"
-      # redirect_to '/text'
-      redirect_to @user
+      redirect_to '/text'
+      # redirect_to @user
     else
       render 'new'
     end
