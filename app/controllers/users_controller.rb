@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       log_in(@user)
       flash[:success] = "Welcome to Lil' Twitter!"
       redirect_to '/text'
-      # redirect_to @user
     else
       render 'new'
     end
